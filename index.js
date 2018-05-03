@@ -15,4 +15,4 @@ app.use(express.static(__dirname + "/views"));
 
 app.get("/", (req, res) => res.sendFile("index.html"));
 
-app.listen(process.env.port || 3000, process.env.IP, () => console.log("App is running"));
+app.listen(process.env.PORT || 3000, process.env.IP, () => console.log("App is running"));
