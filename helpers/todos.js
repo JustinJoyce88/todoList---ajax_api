@@ -1,61 +1,43 @@
-var db = require('../models');
+var db = require("../models");
 
-exports.getTodos = function (req, res) {
+exports.getTodos = (req, res) => {
   db.Todo.find()
-    .then(function (todos) {
-      res.json(todos);
-    })
-    .catch(function (err) {
-      res.send(err);
-    });
+    .then(todos => res.json(todos))
+    .catch(err => res.send(err));
 };
 
-exports.createTodo = function (req, res) {
+exports.createTodo = (req, res) => {
   db.Todo.create(req.body)
-    .then(function (newTodo) {
-      res.status(201).json(newTodo);
-    })
-    .catch(function (err) {
-      res.send(err);
-    });
+    .then(newTodo => res.status(201).json(newTodo))
+    .catch(err => res.send(err));
 };
 
-exports.getTodo = function (req, res) {
+exports.getTodo = (req, res) => {
   db.Todo.findById(req.params.todoId)
-    .then(function (foundTodo) {
-      res.json(foundTodo);
-    })
-    .catch(function (err) {
-      res.send(err);
-    });
+    .then(foundTodo => res.json(foundTodo))
+    .catch(err => res.send(err));
 };
 
-exports.updateTodo = function (req, res) {
-  db.Todo.findOneAndUpdate({
+exports.updateTodo = (req, res) => {
+  db.Todo.findOneAndUpdate(
+    {
       _id: req.params.todoId
-    }, req.body, {
+    },
+    req.body,
+    {
       new: true
-    })
-    .then(function (todo) {
-      res.json(todo);
-    })
-    .catch(function (err) {
-      res.send(err);
-    });
+    }
+  )
+    .then(todo => res.json(todo))
+    .catch(err => res.send(err));
 };
 
-exports.removeTodo = function (req, res) {
+exports.removeTodo = (req, res) => {
   db.Todo.remove({
-      _id: req.params.todoId
-    })
-    .then(function (todo) {
-      res.json({
-        message: 'item deleted'
-      });
-    })
-    .catch(function (err) {
-      res.send(err);
-    });
+    _id: req.params.todoId
+  })
+    .then(todo => res.json({ message: "item deleted" }))
+    .catch(err => res.send(err));
 };
 
 module.exports = exports;
