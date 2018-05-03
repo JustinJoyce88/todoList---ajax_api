@@ -1,4 +1,4 @@
-var express = require("express"),
+let express = require("express"),
   db = require("../models"),
   helpers = require("../helpers/todos"),
   router = express.Router();

@@ -1,4 +1,4 @@
-var express = require("express"),
+let express = require("express"),
   bodyParser = require("body-parser"),
   app = express(),
   todoRoutes = require("./routes/todos");
